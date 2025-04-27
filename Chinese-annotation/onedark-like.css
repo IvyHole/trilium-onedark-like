@@ -1,0 +1,988 @@
+/*
+One Dark Self
+https://github.com/ivyhole/trilium-theme-one-dark
+trilium-NEXT:>=0.93.0
+author
+*/
+@font-face {
+    font-family: 'MononokiNerdFontMono';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../../custom/fonts/MononokiNerdFontMono.woff2');
+}
+
+@font-face {
+    font-family: 'LXGWWenKaiGBR';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../../custom/fonts/LXGWWenKaiGB-R.woff2');
+}
+
+:root{
+    --theme-style: dark;
+    /* 主体字体 */
+    --main-font-family: 'LXGWWenKaiGBR';
+    --main-font-size: normal;
+    /* 笔记树字体 */
+    --tree-font-family: 'LXGWWenKaiGBR';
+    --tree-font-size: normal;
+    /* 笔记详情字体 */
+    --detail-font-family: 'LXGWWenKaiGBR';
+    --detail-font-size: normal;
+    /* 等宽文字字体(代码) */
+    --monospace-font-family: 'MononokiNerdFontMono';
+    --monospace-font-size: normal;
+    /* 主要显示区域配置 */
+    --main-background-color: #282c34;
+    --main-text-color: #c1c7d1;
+    --main-border-color: #c1c7d1;
+    /* 工具栏图标 */
+    --muted-text-color:#c1c7d1;
+
+    --accented-background-color: #21252b;
+    --more-accented-background-color: #373c47;
+    /* 按钮配置 */
+    --button-text-color: #c1c7d1;
+    --button-background-color: #282c34;
+    --button-disabled-text-color: #86919f;
+    --button-disabled-background-color: #282c34;
+    --button-border-color: #c1c7d1;
+    --button-border-radius: 2px;
+    
+    /* 左侧文件树显示区域配置 */
+    --left-pane-background-color: #21252b;
+    --left-pane-text-color: #86919f;
+    /* 左侧文件树选中区域配置 */
+    --active-item-background-color:#323842;
+    --active-item-text-color:#f5f3f4;
+
+    /* 左侧菜单栏配置 */
+    --launcher-pane-background-color: #21252b;
+    --launcher-pane-text-color: #86919f;
+    /* 提示框部分颜色 */
+    --disabled-tooltip-icon-color:#e06c75;
+    --tooltip-background-color:#21252b;
+
+    /* 打开文件栏配置 */
+    --active-tab-background-color: #363a42;
+    --active-tab-hover-background-color: #3d424b;
+    --active-tab-text-color: #f5f3f4;
+
+    --inactive-tab-background-color: #282c34;
+    --inactive-tab-hover-background-color: #323842;
+    --inactive-tab-text-color:#86919f;
+
+    /* 菜单颜色 */
+    --menu-text-color: #dddbdc;
+    --menu-background-color: #21252b;
+    /* 模态框颜色 */
+    --modal-background-color: #21252b;
+    --modal-backdrop-color: #f5f3f4;
+    /* 超链接颜色 */
+    --link-color:#61afef;
+    /* 输入颜色 */
+    --input-text-color:#c1c7d1;
+    /* 选中选项颜色 */
+    --hover-item-text-color: #f5f3f4;
+    --hover-item-border-color: #c1c7d1;
+    /* 下拉菜单颜色 */
+    --dropdown-border-color: #c1c7d1;
+    --dropdown-item-icon-destructive-color: #e06c75;
+
+    /* 焦点按钮配置 */
+    --primary-button-background-color: #61afef;
+    --primary-button-text-color: #0c0c0c;
+    --primary-button-border-color:#61afef;
+
+    /* 滚动条设置 */
+    --scrollbar-border-color: #373c47;
+    --scrollbar-background-color: #373c47;
+
+    --ck-color-button-on-color:#61afef;
+
+    /* 非官方变量自定义颜色 */
+    /* 菜单按钮颜色 */
+    --menu-button-background-color:#21252b;
+    /* 焦点图标颜色 */
+    --hover-icon-color:#f5f3f4;
+    --checkbox-activate-color1:#61afef;
+
+    --common-color-white:#f5f3f4;
+    --common-color-whitea:#f5f3f4aa;
+    --common-color-black:#282c34;
+    --common-color-red:#e06c75;
+    --common-color-reda:#e06c7544;
+    --common-color-green:#98c379;
+    --common-color-greena:#98c37944;
+    --common-color-green2:#7bc379;
+    --common-color-yellow:#e5c07b;
+    --common-color-yellowa:#e5c07b44;
+    --common-color-orange:#d19a66;
+    --common-color-blue:#61afef;
+    --common-color-bluea:#61afef44;
+    --common-color-violet:#c678dd;
+    --common-color-violeta:#c678dd44;
+    --common-color-cyan:#56b6c2;
+    --common-color-gery:#abb2bf;
+    --common-color-gery2: #86919f;
+    --common-color-gery3: #424958;
+    --common-color-gery3a: #42495844;
+    --common-color-mauve: #c6a0f6;
+    --common-color-flamingo: #f0c6c6;
+    --common-color-surface0: #363a4f;
+    --common-color-lavender: #b7bdf8;
+
+    --common-color-blockquote-dark: #272c34;
+}
+
+/* 左上角菜单与搜索按钮底色修改 */
+.global-menu-button,.search-button,.tree-floating-button {
+    background: var(--menu-button-background-color) !important;
+}
+/* 文件树右下角按钮区域修改 */
+.tree-floating-button{
+    border: none !important;
+    background: var(--menu-button-background-color) !important;
+}
+.tree-floating-button:hover{
+    color:var(--hover-icon-color) !important;
+}
+.tree-actions{
+    border: none !important;
+}
+/* 滚动条设置 */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+/* 左上角图标修改 */
+.global-menu-button > svg path{
+    transform: rotate(85deg) translateY(5px);
+    transform-origin: center;
+}
+.global-menu-button:hover > svg path.st0,.global-menu-button:hover > svg path.st1, .global-menu-button:hover > svg path.st2{
+    fill: #61afef !important;
+}
+.global-menu-button:hover > svg path.st3,.global-menu-button:hover > svg path.st4,.global-menu-button:hover > svg path.st5{
+    fill: #c678dd !important;
+}
+.global-menu-button:hover > svg path.st6,.global-menu-button:hover > svg path.st7,.global-menu-button:hover > svg path.st8{
+    fill: #98c379 !important;
+}
+
+/* 帮助按钮修改 */
+.help-button{
+    color:var(--link-color);
+}
+
+/* 标题outline */
+input.note-title:focus {
+    outline: none;
+}
+
+/* 菜单栏复选框修改 */
+.attr-input-inheritable{
+    accent-color:var(--checkbox-activate-color1);
+    background:var(--modal-background-color);
+}
+
+
+/* 文件树修改 */
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n) {
+    color: var(--common-color-red) !important;
+}
+  
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+1) {
+    color: var(--common-color-yellow)  !important;
+}
+
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+2) {
+    color: var(--common-color-green)  !important;
+}
+
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+3) {
+    color: var(--common-color-cyan)  !important;
+}
+
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+4) {
+    color: var(--common-color-blue)  !important;
+}
+
+div.tree li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+5) {
+    color: var(--common-color-violet)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n):hover {
+    color: var(--common-color-red) !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+1):hover {
+    color: var(--common-color-yellow)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+2):hover {
+    color: var(--common-color-green)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+3):hover {
+    color: var(--common-color-cyan)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+4):hover {
+    color: var(--common-color-blue)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+5):hover {
+    color: var(--common-color-violet)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n)>span.fancytree-node:hover {
+    color: var(--common-color-red) !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+1)>span.fancytree-node:hover {
+    color: var(--common-color-yellow)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+2)>span.fancytree-node:hover {
+    color: var(--common-color-green)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+3)>span.fancytree-node:hover {
+    color: var(--common-color-cyan)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+4)>span.fancytree-node:hover {
+    color: var(--common-color-blue)  !important;
+}
+
+li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+5)>span.fancytree-node:hover {
+    color: var(--common-color-violet)  !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-red) !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+1)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-yellow)  !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+2)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-green)  !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+3)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-cyan)  !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+4)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-blue)  !important;
+}
+
+#left-pane li.fancytree-lastsib ul li[role='treeitem']:nth-of-type(6n+5)>span.fancytree-node.fancytree-active {
+    color: var(--common-color-violet)  !important;
+}
+
+
+/* 代码高亮 */
+div#root-widget
+  div#rest-pane
+  div#center-pane
+  div.note-detail
+  div.note-detail-code
+  div.note-detail-code-editor
+  div.CodeMirror-code
+  span {
+  font-family: var(--monospace-font-family);
+}
+div.CodeMirror span.cm-atom {
+  color: var(--common-color-orange);
+}
+div.CodeMirror span.cm-builtin {
+  color: var(--common-color-blue);
+}
+div.CodeMirror span.cm-callee {
+  color: var(--common-color-cyan) !important;
+}
+div.CodeMirror span.cm-comment {
+  color: var(--common-color-gery);
+  padding: 5px 2px;
+  margin: -5px -2px;
+}
+div.CodeMirror span.cm-def {
+  color: var(--common-color-violet);
+}
+div.CodeMirror span.cm-keyword {
+  color: var(--common-color-violet);
+}
+div.CodeMirror span.cm-matchhighlight {
+  color: var(--common-color-black) !important;
+  background-color: var(--common-color-blue) !important;
+}
+div.CodeMirror span.cm-number {
+  color: var(--common-color-yellow);
+}
+div.CodeMirror span.cm-operator {
+  color: var(--common-color-cyan);
+}
+div.CodeMirror span.cm-overlay {
+  color: var(--common-color-black);
+}
+div.CodeMirror span.cm-property {
+  color: var(--common-color-blue);
+}
+div.CodeMirror span.cm-variable {
+  color: var(--common-color-red);
+}
+div.CodeMirror span.cm-variable-2 {
+  color: var(--common-color-blue);
+}
+div.CodeMirror span.cm-variable-3 {
+    color: var(--common-color-cyan);
+}
+div.CodeMirror span.cm-meta {
+  color: var(--common-color-mauve);
+}
+div.CodeMirror span.cm-qualifier {
+  color: var(--common-color-orange);
+}
+div.CodeMirror span.cm-string {
+  color: var(--common-color-green);
+}
+div.CodeMirror span.cm-string-2 {
+  color: var(--common-color-green2);
+}
+div.CodeMirror span.cm-tag {
+  color: var(--common-color-red);
+}
+div.CodeMirror-lines {
+  color: var(--common-color-flamingo);
+}
+div.CodeMirror-cursor {
+  filter: invert(100%);
+}
+
+.cm-s-default .cm-attribute {
+  color: var(--common-color-yellow);
+}
+
+.ck-find-result_selected {
+  color: var(--common-color-black) !important;
+  background-color: var(--common-color-blue);
+}
+
+.ck-find-result {
+  color: var(--common-color-black) !important;
+  background-color: var(--common-color-yellow);
+}
+
+.note-detail-code-editor div.CodeMirror-selected,
+.note-detail-code-editor div.CodeMirror-line::selection {
+  background-color: var(--common-color-surface0);
+}
+
+.CodeMirror-matchingbracket {
+  text-decoration: none;
+  color: var(--common-color-mauve) !important;
+  border: 1px solid var(--common-color-blue);
+}
+
+.CodeMirror-linenumber {
+  color: var(--common-color-gery);
+  font-family: var(--monospace-font-family) !important;
+}
+
+/* 下拉选框设置 */
+select,option,optgroup{
+    background: var(--button-background-color);
+}
+
+select::-webkit-scrollbar {
+  background-color: var(--button-background-color); /* 滚动条背景 */
+}
+
+
+/*h23456*/
+
+  
+div.note-split.type-text h2:not(div.note-list-widget h2) {
+    color: var(--common-color-red);
+    border-bottom: 2px solid var(--common-color-gery);
+}
+
+div.note-split.type-text h2:not(div.note-list-widget h2)::before {
+    content: 'H2';
+    color: var(--common-color-gery);
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    /* width: 1rem; */
+    font-size: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.note-split.type-text h3:not(div.note-list-widget h3) {
+    color: var(--common-color-yellow);
+    border:none;
+}
+
+div.note-split.type-text h3:not(div.note-list-widget h3)::before  {
+    content: 'H3';
+    color: var(--common-color-gery);
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    /* width: 1rem; */
+    font-size: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.note-split.type-text h4:not(div.note-list-widget h4) {
+    color: var(--common-color-green);
+    border:none;
+}
+
+div.note-split.type-text h4:not(div.note-list-widget h4)::before  {
+    content: 'H4';
+    color: var(--common-color-gery);
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    /* width: 1rem; */
+    font-size: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.note-split.type-text h5:not(.note-book-header):not(div.note-list-widget h5) {
+    color: var(--common-color-blue);
+    border:none;
+}
+
+div.note-split.type-text h5:not(.note-book-header):not(div.note-list-widget h5)::before  {
+    content: 'H5';
+    color: var(--common-color-gery);
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    /* width: 1rem; */
+    font-size: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.note-split.type-text h6:not(div.note-list-widget h6) {
+    color: var(--common-color-violet);
+    border:none;
+}
+
+div.note-split.type-text h6:not(div.note-list-widget h6)::before  {
+    content: 'H6';
+    color: var(--common-color-gery);
+    display: inline-block;
+    position: relative;
+    text-align: right;
+    /* width: 1rem; */
+    font-size: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+div.component.note-split.type-text h1,h2,h3,h4,h5,h6 {
+    margin-top: .3rem !important;
+    margin-bottom: .15rem !important;
+}
+
+/*TOC*/
+div.toc-widget span.toc>ol>li {
+    color: var(--common-color-red);
+}
+
+div.toc-widget span.toc>ol>ol>li {
+    color: var(--common-color-yellow);
+}
+
+div.toc-widget span.toc>ol>ol>ol>li {
+    color: var(--common-color-green);
+}
+
+div.toc-widget span.toc>ol>ol>ol>ol>li {
+    color: var(--common-color-blue);
+}
+
+div.toc-widget span.toc>ol>ol>ol>ol>ol>li {
+    color: var(--common-color-violet);
+}
+
+/*移动通知到右下角*/
+div#toast-container {
+    right: 10px !important;
+    bottom: 10px !important;
+    top: auto !important;
+    width: auto !important;
+}
+
+/* mermaid */
+.ck-mermaid__editing-view{
+    background: var(--main-background-color) !important;
+}
+.ck-mermaid__preview{
+    background: var(--common-color-whitea) !important;
+}
+
+/* todolist */
+.todo-list .todo-list__label>span[contenteditable=false]>input:before{
+    border: 1px solid var(--main-text-color);
+    background: var(--main-background-color);
+}
+
+.todo-list .todo-list__label>span[contenteditable=false]>input[checked]:before {
+    background: var(--common-color-blue) !important;
+    border-color: var(--common-color-blue) !important;
+}
+
+.todo-list .todo-list__label>span[contenteditable=false]>input[checked]:after{
+    border-color:var(--main-background-color) !important;
+}
+
+/* 高亮 */
+div.note-split.type-text p>u {
+    text-decoration-color: var(--common-color-blue);
+    text-underline-offset: 0.1rem;
+}
+
+div.note-split.type-text p>del {
+    color: var(--common-color-gery2);
+}
+
+/* 以下为修改引用块,无须->删除*/
+/* blockquote 只针对文本文章中的格式 */
+div.note-split.type-text blockquote{
+    border: 1px solid var(--common-color-gery2) !important;
+    font-style: normal  !important;
+    border-radius: 0.5em  !important;
+    margin: 0.5em 0  !important;
+    position: relative  !important;
+    padding-left: 0  !important;
+    padding-right: 0  !important;
+    overflow: hidden  !important;
+}
+div.note-split.type-text blockquote>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+div.note-split.type-text blockquote>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+div.note-split.type-text blockquote>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+div.note-split.type-text blockquote>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-gery3);
+    background: var(--common-color-blockquote-dark);
+    border-bottom: 1px dashed var(--common-color-gery3);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+div.note-split.type-text blockquote>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-gery3);
+    background: var(--common-color-blockquote-dark);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    margin: 0;
+}
+
+
+div.note-split.type-text blockquote>p:first-child::before{
+    content: '❞';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+
+.admonition.note::before {
+    all: unset !important;
+}
+
+.admonition.note {
+    --accent-color: var(--common-color-blue) !important;
+    margin: 0.5em 0  !important;
+    padding:0 !important;
+}
+
+.admonition.note>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+.admonition.note>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+.admonition.note>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+.admonition.note>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-blue);
+    background: var(--common-color-bluea);
+    border-bottom: 1px dashed var(--common-color-blue);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+.admonition.note>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-blue);
+    background: var(--common-color-bluea);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    padding-right: 2.25em !important;
+    margin: 0;
+}
+
+
+.admonition.note>p:first-child::before{
+    content: '🛈';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+
+.admonition.tip::before {
+    all: unset !important;
+}
+
+.admonition.tip {
+    --accent-color: var(--common-color-green) !important;
+    margin: 0.5em 0  !important;
+    padding:0 !important;
+}
+
+.admonition.tip>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+.admonition.tip>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+.admonition.tip>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+.admonition.tip>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-green);
+    background: var(--common-color-greena);
+    border-bottom: 1px dashed var(--common-color-green);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+.admonition.tip>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-green);
+    background: var(--common-color-greena);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    margin: 0;
+}
+
+
+.admonition.tip>p:first-child::before{
+    content: '✔';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+
+.admonition.important::before {
+    all: unset !important;
+}
+
+.admonition.important {
+    --accent-color: var(--common-color-violet) !important;
+    margin: 0.5em 0  !important;
+    padding:0 !important;
+}
+
+.admonition.important>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+.admonition.important>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+.admonition.important>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+.admonition.important>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-violet);
+    background: var(--common-color-violeta);
+    border-bottom: 1px dashed var(--common-color-violet);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+.admonition.important>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-violet);
+    background: var(--common-color-violeta);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    padding-right: 2.25em !important;
+    margin: 0;
+}
+
+
+.admonition.important>p:first-child::before{
+    content: '★';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+.admonition.caution::before {
+    all: unset !important;
+}
+
+.admonition.caution {
+    --accent-color: var(--common-color-red) !important;
+    margin: 0.5em 0  !important;
+    padding:0 !important;
+}
+
+.admonition.caution>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+.admonition.caution>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+.admonition.caution>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+.admonition.caution>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-red);
+    background: var(--common-color-reda);
+    border-bottom: 1px dashed var(--common-color-red);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+.admonition.caution>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-red);
+    background: var(--common-color-reda);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    padding-right: 2.25em !important;
+    margin: 0;
+}
+
+
+.admonition.caution>p:first-child::before{
+    content: '🗲';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+
+.admonition.warning::before {
+    all: unset !important;
+}
+
+.admonition.warning {
+    --accent-color: var(--common-color-yellow) !important;
+    margin: 0.5em 0  !important;
+    padding:0 !important;
+}
+
+.admonition.warning>p{
+    margin-bottom: 0;
+    padding: 0;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+
+.admonition.warning>p:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0.5em !important;
+    padding-left: 1.25em !important;
+    padding-right: 1.25em !important;
+}
+.admonition.warning>p:nth-child(2){
+    padding-top: 0.5em !important;
+}
+
+.admonition.warning>p:first-child:not(:last-child) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-yellow);
+    background: var(--common-color-yellowa);
+    border-bottom: 1px dashed var(--common-color-yellow);
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-right: 2.25em !important;
+    font-size: 1em;
+    margin: 0;
+}
+
+.admonition.warning>p:first-child:last-child {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--common-color-yellow);
+    background: var(--common-color-yellowa);
+    font-size: 1em;
+    padding: 0.5em;
+    padding-left: 2.25em !important;
+    padding-bottom: 0.5em !important;
+    padding-right: 2.25em !important;
+    margin: 0;
+}
+
+
+.admonition.warning>p:first-child::before{
+    content: '⚠';
+    font-family: boxicons !important;
+    position: absolute;
+    font-weight: 500;
+    left: 1em;
+    font-size: 1em;
+}
+
+.ck-content .table>figcaption{
+    background-color: var(--main-background-color) !important;
+    color: var(--main-text-color) !important;
+    border: 1px solid var(--main-border-color);
+    border-bottom: none !important;
+}
+
+/* 代码块 */
+.ck.ck-editor__editable pre[data-language]:after {
+    background-color: var(--main-background-color) !important;
+    border: 1px solid var(--main-border-color);
+    color: var(--main-text-color);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.hljs {
+    border-radius: 0.5em !important;
+}
+
+body .ck-content *:not(pre) code {
+    background-color: var(--common-color-greena);
+    color:var(--common-color-black);
+    margin: 0;
+}
